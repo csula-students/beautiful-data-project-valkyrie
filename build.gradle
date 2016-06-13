@@ -18,7 +18,7 @@ repositories {
 
 jar {
   manifest {
-    attributes 'Main-Class': 'edu.csula.datascience.examples.Hello'
+    attributes 'Main-Class': 'edu.csula.datascience.examples.MongoExampleApp'
   }
 }
 
@@ -34,6 +34,11 @@ dependencies {
   compile 'org.mongodb:mongodb-driver:3.2.2'
   compile 'org.twitter4j:twitter4j-core:4.0.4'
   compile 'org.twitter4j:twitter4j-stream:4.0.2'
+  compile 'org.elasticsearch:elasticsearch:2.2.0'
+  compile 'com.google.code.gson:gson:2.6.2'
+  compile 'org.apache.commons:commons-csv:1.2'
+  compile group: 'io.searchbox', name: 'jest', version: '2.0.2'
+
   testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
@@ -55,11 +60,24 @@ task acquireTwitter(type: JavaExec) {
   main = 'edu.csula.datascience.acquisition.TwitterCollectorApp'
 }
 
-task StreamTwitter(type: JavaExec) {
+task esExample(type: JavaExec) {
   classpath = sourceSets.main.runtimeClasspath
 
-  main = 'edu.csula.datascience.acquisition.SimpleStream'
+  main = 'edu.csula.datascience.examples.ElasticSearchExampleApp'
 }
+
+task esQuiz(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'edu.csula.datascience.examples.QuizESApp'
+}
+
+task remoteEs(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'edu.csula.datascience.examples.JestExampleApp'
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = '2.0'
 }
