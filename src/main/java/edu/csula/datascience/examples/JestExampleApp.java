@@ -114,19 +114,7 @@ public class JestExampleApp {
         System.out.println("We are done! Yay!");
     }
 
-    static class Temperature {
-        final String date;
-        final double averageTemperature;
-        final String state;
-        final String country;
-
-        public Temperature(String date, double averageTemperature, String state, String country) {
-            this.date = date;
-            this.averageTemperature = averageTemperature;
-            this.state = state;
-            this.country = country;
-        }
-    }
+    
     static class TwitterData {
         final String username;
         final String profileLocation;
